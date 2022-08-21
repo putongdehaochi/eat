@@ -1,0 +1,9 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "eat",
+  "appid": "wx5d39b18c4f2f027b",
+  "setting": {
+    "es6": false,
+    "minified": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "miniprogramRoot": "./dist",
+  "projectname": "eat",
+  "description": "",
+  "appid": "wx5d39b18c4f2f027b",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "enhance": false,
+    "compileHotReLoad": false,
+    "postcss": false,
+    "minified": false
+  },
+  "useCompilerPlugins": ["sass"],
+  "compileType": "miniprogram"
+}
