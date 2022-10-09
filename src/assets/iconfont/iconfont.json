@@ -1,0 +1,79 @@
+{
+  "id": "3601061",
+  "name": "eat",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2418244",
+      "name": "工作台",
+      "font_class": "eat-work",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "5701367",
+      "name": "我的小",
+      "font_class": "eat-mine",
+      "unicode": "e941",
+      "unicode_decimal": 59713
+    },
+    {
+      "icon_id": "12240031",
+      "name": "电影",
+      "font_class": "eat-movie",
+      "unicode": "e6c6",
+      "unicode_decimal": 59078
+    },
+    {
+      "icon_id": "12240034",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e6c7",
+      "unicode_decimal": 59079
+    },
+    {
+      "icon_id": "12592405",
+      "name": "消息",
+      "font_class": "eat-message",
+      "unicode": "e74c",
+      "unicode_decimal": 59212
+    },
+    {
+      "icon_id": "26240304",
+      "name": "首页-08",
+      "font_class": "eat-home",
+      "unicode": "e938",
+      "unicode_decimal": 59704
+    },
+    {
+      "icon_id": "27888844",
+      "name": "咖啡",
+      "font_class": "eat-coffe",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "27888898",
+      "name": "珍珠奶茶",
+      "font_class": "eat-tea",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "1840119",
+      "name": "哭",
+      "font_class": "eat-cry",
+      "unicode": "e6ea",
+      "unicode_decimal": 59114
+    },
+    {
+      "icon_id": "8450566",
+      "name": "home",
+      "font_class": "icon-home",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    }
+  ]
+}

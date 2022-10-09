@@ -9,7 +9,7 @@
     "css": "sass"
   },
   "scripts": {
-    "start": "yarn dev:weapp",
+    "dev": "taro env --name dev && yarn dev:weapp",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
@@ -48,14 +48,16 @@
     "@tarojs/plugin-platform-swan": "3.5.2",
     "@tarojs/plugin-platform-tt": "3.5.2",
     "@tarojs/plugin-platform-weapp": "3.5.2",
-    "@tarojs/plugin-sass": "^2.2.10",
     "@tarojs/router": "3.5.2",
     "@tarojs/runtime": "3.5.2",
     "@tarojs/shared": "3.5.2",
     "@tarojs/taro": "3.5.2",
     "@tarojs/taro-h5": "3.5.2",
+    "@types/lodash": "^4.14.184",
     "babel-plugin-import": "^1.13.5",
-    "vant": "^3.5.4",
+    "babel-plugin-lodash": "^3.3.4",
+    "flyio": "^0.6.14",
+    "lodash": "^4.17.21",
     "vite-plugin-style-import": "^2.0.0",
     "vue": "^3.0.0"
   },
