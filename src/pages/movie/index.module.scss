@@ -1,5 +1,6 @@
 page {
   background-color: #f3f3f3;
+  padding-bottom: 32px;
 }
 
 .select {
@@ -16,9 +17,12 @@ page {
 
 .block {
   background-color: #fff;
-  padding: 10px;
-  border-radius: 3px;
+  padding: 16px 12px;
+  border-radius: 6px;
   display: flex;
 }
 
-.img{}
+.img{
+  width: 250px;
+  height: 180px;
+}

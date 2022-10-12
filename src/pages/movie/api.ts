@@ -1,9 +1,6 @@
 import http from '@/config/http';
 
 export default {
-    searchDbMovie(data: object) {
-        return http.post('/movie/search', data)
-    },
     getMovieList(params) {
         return http.get('/movie/list', params)
     },
@@ -12,5 +9,11 @@ export default {
     },
     getMyMovieList(params) {
         return http.get('/movie/search', params)
+    },
+    addFavorMovie(data) {
+        return http.post('/movie/add', data)
+    },
+    removeFavorMovie(data) {
+        return http.post('/movie/remove', data)
     }
 }

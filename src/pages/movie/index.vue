@@ -1,8 +1,8 @@
 <template>
   <nut-searchbar
+    @focus="showSearch = true"
     v-model="searchValue"
     @search="search"
-    @focus="showSearch = true"
   >
     <template v-slot:leftin>
       <nut-icon size="14" name="search2"></nut-icon>
@@ -13,14 +13,7 @@
   >
   <template v-if="showSearch">
     <view :class="styles.list" v-for="(item, index) in dbResult" :key="index">
-      <view :class="styles.block">
-        <img :class="styles.img" src="{{item.COVER}}" />
-        <view>{{ item.NAME }}</view>
-        <view>{{ item.DOUBAN_SCORE }}</view>
-        <view>{{ item.LANGUAGES }}</view>
-        <view>{{ item.GENRES }}</view>
-        <view>{{ item.YEAR }}</view>
-      </view>
+      <MovieBlock :data="item" :showHeart="true" />
     </view>
   </template>
   <template v-else>
@@ -29,7 +22,7 @@
         <view :class="styles.select">
           <view v-for="item in state.types" :key="item">
             <span
-              :class="{ square: true, highlight: active === item }"
+              :class="{ mv_square: true, mv_highlight: active === item }"
               @tap="setActive(item)"
             >
               {{ item }}
@@ -39,52 +32,23 @@
       </nut-menu-item>
     </nut-menu>
     <view :class="styles.list" v-for="(item, index) in result" :key="index">
-      <view :class="styles.block">
-        <img :class="styles.img" src="{{item.COVER}}" />
-        <view>{{ item.NAME }}</view>
-        <view>{{ item.DOUBAN_SCORE }}</view>
-        <view>{{ item.LANGUAGES }}</view>
-        <view>{{ item.GENRES }}</view>
-        <view>{{ item.YEAR }}</view>
-      </view>
+      <MovieBlock :data="item" />
     </view>
   </template>
 </template>
 
 <script setup>
 import { ref, onMounted, reactive, watchEffect } from "vue";
-import Taro, { useReachBottom } from "@tarojs/taro";
-import styles from "./index.module.scss";
 import { promiseCatcher, handleError } from "@/utils";
+import Taro, { useReachBottom } from "@tarojs/taro";
 import _ from "lodash";
+import MovieBlock from "./components/MovieBlock";
+import styles from "./index.module.scss";
+import { TYPES } from "./constant";
 import api from "./api";
 
 const state = reactive({
-  types: [
-    "全部类型",
-    "喜剧",
-    "爱情",
-    "动作",
-    "科幻",
-    "动画",
-    "悬疑",
-    "犯罪",
-    "惊悚",
-    "冒险",
-    "音乐",
-    "历史",
-    "奇幻",
-    "恐怖",
-    "战争",
-    "传记",
-    "歌舞",
-    "武侠",
-    "情色",
-    "灾难",
-    "西部",
-    "纪录片",
-    "短片"
-  ]
+  types: TYPES
 });
 const result = ref([]);
 const dbResult = ref([]);
@@ -142,14 +106,14 @@ useReachBottom(async () => {
 </script>
 
 <style>
-.square {
+.mv_square {
   background-color: #f3f3f3;
   border-radius: 3px;
   padding: 5px;
   margin: 5px 10px 5px 0;
   font-size: 15px;
 }
-.highlight {
+.mv_highlight {
   color: green;
 }
 .nut-menu-item__content {
