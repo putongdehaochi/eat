@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3601061 */
-  src: url('iconfont.woff2?t=1663254556060') format('woff2'),
-       url('iconfont.woff?t=1663254556060') format('woff'),
-       url('iconfont.ttf?t=1663254556060') format('truetype');
+  src: url('iconfont.woff2?t=1666257365746') format('woff2'),
+       url('iconfont.woff?t=1666257365746') format('woff'),
+       url('iconfont.ttf?t=1666257365746') format('truetype');
 }
 
 .iconfont {
@@ -13,43 +13,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-eat-work:before {
-  content: "\e66c";
+.icon-eat_movie:before {
+  content: "\fc9d";
 }
 
-.icon-eat-mine:before {
-  content: "\e941";
+.icon-eat_user:before {
+  content: "\e7ae";
 }
 
-.icon-eat-movie:before {
-  content: "\e6c6";
+.icon-eat_home:before {
+  content: "\e7c6";
 }
 
-.icon-shouye:before {
-  content: "\e6c7";
+.icon-eat_work:before {
+  content: "\e7d7";
 }
 
-.icon-eat-message:before {
-  content: "\e74c";
-}
-
-.icon-eat-home:before {
-  content: "\e938";
-}
-
-.icon-eat-coffe:before {
-  content: "\e657";
-}
-
-.icon-eat-tea:before {
-  content: "\e659";
-}
-
-.icon-eat-cry:before {
-  content: "\e6ea";
-}
-
-.icon-icon-home:before {
-  content: "\e612";
+.icon-eat_love:before {
+  content: "\e7df";
 }
 

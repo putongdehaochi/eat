@@ -12,9 +12,9 @@
       >
         <nut-icon
           font-class-name="iconfont"
-          class-prefix="icon-eat"
+          class-prefix="icon-eat_"
           style="color: #1296db"
-          name="tea"
+          name="{item.icon}"
           size="40"
         />
         <span :class="styles.title">{{ item.title }}</span></nut-grid-item

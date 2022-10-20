@@ -25,21 +25,21 @@ export default defineAppConfig({
       },
       {
         pagePath: 'pages/work/index',
-        text: '工作台',
+        text: '工作',
         iconPath: 'assets/tabbar/work.png',
         selectedIconPath: 'assets/tabbar/work_selected.png',
       },
       {
         pagePath: 'pages/chest/index',
-        text: '百宝箱',
-        iconPath: 'assets/tabbar/message.png',
-        selectedIconPath: 'assets/tabbar/message_selected.png',
+        text: '喜欢',
+        iconPath: 'assets/tabbar/heart.png',
+        selectedIconPath: 'assets/tabbar/heart_selected.png',
       },
       {
         pagePath: 'pages/mine/index',
         text: '我的',
-        iconPath: 'assets/tabbar/mine.png',
-        selectedIconPath: 'assets/tabbar/mine_selected.png',
+        iconPath: 'assets/tabbar/user.png',
+        selectedIconPath: 'assets/tabbar/user_selected.png',
       }
     ]
   }
