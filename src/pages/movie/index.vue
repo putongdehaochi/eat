@@ -1,11 +1,13 @@
 <template>
   <nut-searchbar
     @focus="showSearch = true"
+    input-background="#ffeef1"
     v-model="searchValue"
+    background="#ffe9ee"
     @search="search"
   >
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <nut-icon size="14" name="search2" />
     </template>
     <template v-slot:rightout>
       <view @tap="cancel">取消</view>
@@ -17,7 +19,7 @@
     </view>
   </template>
   <template v-else>
-    <nut-menu scroll-fixed>
+    <nut-menu scroll-fixed :title-class="styles.title">
       <nut-menu-item title="类型" ref="select">
         <view :class="styles.select">
           <view v-for="item in state.types" :key="item">
@@ -110,16 +112,18 @@ useReachBottom(async () => {
 
 <style>
 .mv_square {
-  background-color: #f3f3f3;
+  background-color: #ffdde9;
   border-radius: 3px;
   padding: 5px;
   margin: 5px 10px 5px 0;
   font-size: 15px;
+  color: rgba(0, 0, 0, 0.3);
 }
 .mv_highlight {
-  color: green;
+  color: #ff6188;
 }
 .nut-menu-item__content {
   padding-top: 0;
+  background-color: #fff0f6;
 }
 </style>

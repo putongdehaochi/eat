@@ -1,5 +1,5 @@
 .block {
-  background-color: #fff;
+  background-color: #ffdde9;
   padding: 16px 12px;
   border-radius: 6px;
   display: flex;
@@ -14,6 +14,7 @@
   position: relative;
   flex: 1;
   margin-left: 16px;
+  color: #ff61a5;
 
   view {
     line-height: 1.5;
@@ -30,7 +31,7 @@
 .heart {
   position: absolute;
   right: -15%;
-  top: 34%;
+  top: 40%;
   width: 75px;
   height: 75px;
   background: url("../../../assets/heart.png") no-repeat;
@@ -52,4 +53,14 @@
   max-width: 140px;
   display: flex;
   flex-wrap: wrap;
+}
+
+.head {
+  font-size: 17px !important;
+}
+
+.intro {
+  color: #121212;
+  font-size: 12px !important;
+  line-height: 2 !important;
 }

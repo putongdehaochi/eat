@@ -10,13 +10,7 @@
         v-for="item in menus"
         :key="item.key"
       >
-        <nut-icon
-          font-class-name="iconfont"
-          class-prefix="icon-eat_"
-          style="color: #1296db"
-          name="{item.icon}"
-          size="40"
-        />
+        <img :src="`../../assets/icons/${item.icon}.png`" :class="styles.img" />
         <span :class="styles.title">{{ item.title }}</span>
       </nut-grid-item>
     </nut-grid>
@@ -25,8 +19,9 @@
 
 <script setup>
 import styles from "./index.module.scss";
-import menus from "../chest/constant";
+import menus from "./constant";
 import Taro from "@tarojs/taro";
+import tea from "../../assets/icons/tea.png";
 </script>
 
 <style>

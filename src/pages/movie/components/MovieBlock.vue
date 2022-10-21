@@ -1,11 +1,13 @@
 <template>
   <view :class="styles.block">
-    <image :class="styles.img" :src="data.COVER || ''" />
+    <image :class="styles.img" :src="data.COVER || noImg" />
     <view :class="styles.right">
-      <view>{{ data.NAME || "-" }}</view>
-      <view>年份: {{ data.YEAR || "-" }}</view>
-      <view>豆瓣评分: {{ data.DOUBAN_SCORE || "-" }}</view>
-      <view>{{ data.LANGUAGES || "-" }}</view>
+      <view :class="styles.head">{{ data.NAME || "-" }}</view>
+      <view :class="styles.intro">年份: {{ data.YEAR || "-" }}</view>
+      <view :class="styles.intro"
+        >豆瓣评分: {{ data.DOUBAN_SCORE || "-" }}</view
+      >
+      <view :class="styles.intro">{{ data.LANGUAGES || "-" }}</view>
       <view :class="styles.genres">{{ data.GENRES || "-" }}</view>
       <view :class="styles.desc">{{ data.STORYLINE || "-" }}</view>
       <view
@@ -27,6 +29,7 @@ import { ref } from "vue";
 import _ from "lodash";
 import styles from "./index.module.scss";
 import api from "../api";
+import noImg from "../../../assets/noImg.png";
 
 const props = defineProps({
   showHeart: {

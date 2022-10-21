@@ -3,14 +3,14 @@ export default defineAppConfig({
     'pages/index/index',
     'pages/login/index',
     'pages/work/index',
-    'pages/chest/index',
+    'pages/love/index',
     'pages/mine/index',
     'pages/movie/index',
   ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#ffe9ee',
-    navigationBarTitleText: 'WeChat',
+    navigationBarTitleText: '❤',
     navigationBarTextStyle: 'black'
   },
   tabBar: {
@@ -31,7 +31,7 @@ export default defineAppConfig({
         selectedIconPath: 'assets/tabbar/work_selected.png',
       },
       {
-        pagePath: 'pages/chest/index',
+        pagePath: 'pages/love/index',
         text: '喜欢',
         iconPath: 'assets/tabbar/heart.png',
         selectedIconPath: 'assets/tabbar/heart_selected.png',

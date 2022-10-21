@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: '工作'
+  navigationBarTitleText: '喜欢'
 })

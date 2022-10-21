@@ -4,8 +4,8 @@
       <view :class="styles.head">
         <!-- <img :class="logo" /> -->
         <view :class="styles.name">
-          <view :class="styles.title">普通的小程序</view>
-          <view :class="styles.tips">嘻嘻嘻嘻嘻嘻</view>
+          <view :class="styles.title">今夜月色真美</view>
+          <view :class="styles.tips"></view>
         </view>
       </view>
       <view :class="styles.form">
@@ -36,12 +36,17 @@
           </nut-form-item>
           <nut-form-item>
             <view :class="styles.opts">
-              <view style="color: #333; margin-bottom: 8px;"
+              <view style="color: #121212; margin-bottom: 16px;"
                 >登录表示您已同意<text style="color: #3499d8"
                   >《服务条款》</text
                 ></view
               >
-              <nut-button style="width: 100%" type="primary" @tap="submit"
+              <nut-button
+                style="width: 100%"
+                color="#ff6188"
+                shape="square"
+                type="primary"
+                @tap="submit"
                 >立即登录</nut-button
               >
               <!-- <nut-checkbox v-model="state.checked" @change="!state.checked"

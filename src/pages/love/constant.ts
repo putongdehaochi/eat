@@ -2,7 +2,7 @@ export default [
     {
         "key": "movie",
         "title": "电影",
-        "icon": "movie",
+        "icon": "tea",
         "url": "/pages/movie/index"
     }
 ]
