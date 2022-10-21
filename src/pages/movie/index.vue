@@ -32,7 +32,7 @@
       </nut-menu-item>
     </nut-menu>
     <view :class="styles.list" v-for="(item, index) in result" :key="index">
-      <MovieBlock :data="item" />
+      <MovieBlock :data="item" :showHeart="true" />
     </view>
   </template>
 </template>
@@ -78,11 +78,12 @@ const search = async () => {
 
 const setActive = async val => {
   active.value = val;
-  result.value = _.get(
-    await api.getMyMovieList({ page, keyword: val === "全部类型" ? "" : val }),
-    "results",
-    []
+  const [err, res] = await promiseCatcher(
+    api.getMyMovieList({ keyword: val === "全部类型" ? "" : val })
   );
+  if (err) return handleError(err);
+  result.value = _.get(res, "results", []);
+  page = 1;
   select.value.toggle();
 };
 
@@ -93,14 +94,16 @@ onMounted(async () => {
 useReachBottom(async () => {
   if (showSearch.value) {
     const [err, res] = await promiseCatcher(
-      api.getDbMovieList({ dbPage: (dbPage += 1), keyword: searchValue.value })
+      api.getDbMovieList({ page: (dbPage += 1), keyword: searchValue.value })
     );
+    if (err) return handleError(err);
+    dbResult.value = _.concat(dbResult.value, _.get(res, "results", []));
   } else {
-    result.value = _.get(
-      await api.getMyMovieList({ page: (page += 1) }),
-      "results",
-      []
+    const [err, res] = await promiseCatcher(
+      api.getMyMovieList({ page: (page += 1) })
     );
+    if (err) return handleError(err);
+    result.value = _.concat(result.value, _.get(res, "results", []));
   }
 });
 </script>

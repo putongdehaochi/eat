@@ -1,7 +1,7 @@
 export default defineAppConfig({
   pages: [
-    'pages/login/index',
     'pages/index/index',
+    'pages/login/index',
     'pages/work/index',
     'pages/chest/index',
     'pages/mine/index',
@@ -9,13 +9,14 @@ export default defineAppConfig({
   ],
   window: {
     backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
+    navigationBarBackgroundColor: '#ffe9ee',
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black'
   },
   tabBar: {
-    color: "#515151",
-    selectedColor: "#1296db",
+    color: "#121212",
+    selectedColor: "#ff6188",
+    backgroundColor: "#ffe9ee",
     list: [
       {
         pagePath: 'pages/index/index',

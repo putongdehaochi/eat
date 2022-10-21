@@ -2,12 +2,12 @@
   <view :class="styles.block">
     <image :class="styles.img" :src="data.COVER || ''" />
     <view :class="styles.right">
-      <view>{{ data.NAME }}</view>
-      <view>年份: {{ data.YEAR }}</view>
+      <view>{{ data.NAME || "-" }}</view>
+      <view>年份: {{ data.YEAR || "-" }}</view>
       <view>豆瓣评分: {{ data.DOUBAN_SCORE || "-" }}</view>
-      <view>{{ data.LANGUAGES }}</view>
-      <view>{{ data.GENRES }}</view>
-      <view :class="styles.desc">{{ data.STORYLINE }}</view>
+      <view>{{ data.LANGUAGES || "-" }}</view>
+      <view :class="styles.genres">{{ data.GENRES || "-" }}</view>
+      <view :class="styles.desc">{{ data.STORYLINE || "-" }}</view>
       <view
         :class="[
           active ? styles.heart_active : styles.heart_silent,
