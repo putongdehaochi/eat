@@ -116,12 +116,14 @@ onMounted(async () => {
 useReachBottom(async () => {
   if (showSearch.value) {
     const { result } = await getDbData({
-      page: (dbPage += 1),
+      page: dbPage + 1,
       keyword: searchValue.value
     });
+    if (!_.isEmpty(result)) dbPage += 1;
     dbResult.value = _.concat(dbResult.value, result);
   } else {
-    const { result: list } = await getData({ page: (page += 1) });
+    const { result: list } = await getData({ page: page + 1 });
+    if (!_.isEmpty(list)) page += 1;
     result.value = _.concat(result.value, list, []);
   }
 });
