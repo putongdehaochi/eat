@@ -72,6 +72,7 @@ import { reactive, ref, toRefs } from "vue";
 import styles from "./index.module.scss";
 import Taro from "@tarojs/taro";
 import API from "./api";
+import _ from "lodash";
 
 const loginForm = ref(null);
 const state = reactive({
@@ -87,11 +88,11 @@ const state = reactive({
 });
 
 const egg = () => {
-  console.log('爱你');
+  console.log("爱你");
 };
 
 const submit = () => {
-  loginForm.value.validate().then(async valid => {
+  loginForm.value.validate().then(async ({ valid = false }) => {
     if (valid) {
       const [err, data] = await promiseCatcher(
         API.login({
@@ -99,11 +100,9 @@ const submit = () => {
           password: state.ruleForm.password
         })
       );
-      if (err) handleError(err);
+      if (err) return handleError(err);
       Taro.setStorageSync("user", data);
       Taro.switchTab({ url: "/pages/index/index" });
-    } else {
-      return false;
     }
   });
 };
