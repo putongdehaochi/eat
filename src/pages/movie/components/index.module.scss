@@ -1,0 +1,66 @@
+.block {
+  background-color: #ffdde9;
+  padding: 16px 12px;
+  border-radius: 6px;
+  display: flex;
+}
+
+.img {
+  width: 140px;
+  height: 180px;
+}
+
+.right {
+  position: relative;
+  flex: 1;
+  margin-left: 16px;
+  color: #ff61a5;
+
+  view {
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  .desc {
+    margin-top: 8px;
+    @include ellipsis(3);
+    font-size: 12px;
+  }
+}
+
+.heart {
+  position: absolute;
+  right: -15%;
+  top: 40%;
+  width: 75px;
+  height: 75px;
+  background: url("../../../assets/heart.png") no-repeat;
+  background-position: left;
+  background-size: cover;
+}
+
+.heart_active {
+  background-position: right;
+  transition: background 0.6s steps(28);
+}
+
+.heart_silent {
+  background-position: left;
+  transition: background 0.6s steps(28);
+}
+
+.genres {
+  max-width: 140px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.head {
+  font-size: 17px !important;
+}
+
+.intro {
+  color: #121212;
+  font-size: 12px !important;
+  line-height: 2 !important;
+}
