@@ -4,40 +4,46 @@
       <view :class="styles.head">
         <!-- <img :class="logo" /> -->
         <view :class="styles.name">
-          <view :class="styles.title">今夜月色真美</view>
+          <view :class="styles.title">火锅乌龙茶</view>
           <view :class="styles.tips"></view>
         </view>
       </view>
       <view :class="styles.form">
         <nut-form :model-value="state.ruleForm" ref="loginForm">
           <nut-form-item
+            style="backgroundColor: #fff0f6"
             :rules="state.rules.username"
+            label-width="70"
             prop="username"
             label="账号"
           >
             <input
               v-model.trim="state.ruleForm.username"
               placeholder="请输入账号"
+              style="color: #ff6188"
               autocomplete="off"
               type="text"
             />
           </nut-form-item>
           <nut-form-item
+            style="backgroundColor: #fff0f6"
             :rules="state.rules.password"
+            label-width="70"
             prop="password"
             label="密码"
           >
             <input
               v-model.trim="state.ruleForm.password"
               placeholder="请输入密码"
+              style="color: #ff6188"
               autocomplete="off"
               type="password"
             />
           </nut-form-item>
-          <nut-form-item>
+          <nut-form-item style="backgroundColor: #fff0f6">
             <view :class="styles.opts">
-              <view style="color: #121212; margin-bottom: 16px;"
-                >登录表示您已同意<text style="color: #3499d8"
+              <view style="color: #121212; margin: 32px 0 16px 0"
+                >登录表示您已同意<text style="color: #3499d8" @tap="egg"
                   >《服务条款》</text
                 ></view
               >
@@ -79,6 +85,10 @@ const state = reactive({
     password: [{ required: "true", message: "密码不能为空", trigger: "blur" }]
   }
 });
+
+const egg = () => {
+  console.log('爱你');
+};
 
 const submit = () => {
   loginForm.value.validate().then(async valid => {

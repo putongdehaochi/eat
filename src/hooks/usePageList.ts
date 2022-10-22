@@ -1,3 +1,5 @@
+import Taro, { useReachBottom } from "@tarojs/taro";
+import _ from "lodash";
 import { ref, watch } from "vue";
 import { handleError } from "../utils";
 import { filterParams, promiseCatcher } from "../utils";
@@ -7,7 +9,7 @@ type Options = {
 	enablePullDownRefresh?: Boolean;
 	enableReachBottom?: Boolean;
 	params?: Record<string, any>;
-	request: Promise;
+	request: Promise<any>;
 };
 
 const defaultParams = {
@@ -15,7 +17,7 @@ const defaultParams = {
 	pageSize: 10,
 };
 
-export default function useQueryPage<T>(options: Options) {
+export default function usePageList<T>(options: Options) {
 	const dataList = ref<Array<T>>([]);
 	const loading = ref(false);
 	const noMore = ref(false);
@@ -29,7 +31,7 @@ export default function useQueryPage<T>(options: Options) {
 		});
 
 		const [err, res] = await promiseCatcher(
-			request(
+			options.request(
 				_.assign(
 					defaultParams,
 					filterParams({ ...options.params, ...options })

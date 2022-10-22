@@ -1,3 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: '电影'
+  navigationBarTitleText: '电影',
+  enablePullDownRefresh: true
 })

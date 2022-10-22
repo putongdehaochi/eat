@@ -8,5 +8,5 @@
 import { ref } from "vue";
 import "./index.module.scss";
 
-const msg = ref("首页");
+const msg = ref("好吃");
 </script>

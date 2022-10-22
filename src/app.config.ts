@@ -5,12 +5,41 @@ export default defineAppConfig({
     'pages/work/index',
     'pages/love/index',
     'pages/mine/index',
-    'pages/movie/index',
+  ],
+  subPackages: [
+    {
+      "root": "pages/movie",
+      "name": "movie",
+      "pages": [
+        'index',
+      ]
+    },
+    {
+      "root": "pages/opus",
+      "name": "opus",
+      "pages": [
+        'index',
+      ]
+    },
+    {
+      "root": "pages/food",
+      "name": "food",
+      "pages": [
+        'index',
+      ]
+    },
+    {
+      "root": "pages/music",
+      "name": "music",
+      "pages": [
+        'index',
+      ]
+    }
   ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#ffe9ee',
-    navigationBarTitleText: '❤',
+    navigationBarTitleText: '火锅乌龙茶',
     navigationBarTextStyle: 'black'
   },
   tabBar: {

@@ -1,3 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: '喜欢'
+  navigationBarTitleText: '喜欢',
+  disableScroll: true
 })

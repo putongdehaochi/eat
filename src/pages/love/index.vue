@@ -1,6 +1,6 @@
 <template>
   <view :class="styles.index">
-    <nut-grid :border="false" :direction="horizontal" :column-num="3" square>
+    <nut-grid :border="false" :direction="horizontal" :column-num="3">
       <nut-grid-item
         @click="
           {
@@ -22,6 +22,9 @@ import styles from "./index.module.scss";
 import menus from "./constant";
 import Taro from "@tarojs/taro";
 import tea from "../../assets/icons/tea.png";
+import huoguo from "../../assets/icons/huoguo.png";
+import hebaodan from "../../assets/icons/hebaodan.png";
+import tongluoshao from "../../assets/icons/tongluoshao.png";
 </script>
 
 <style>
