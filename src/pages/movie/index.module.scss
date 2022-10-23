@@ -4,7 +4,7 @@ page {
 
 .container {
   width: 100%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   padding-bottom: 32px;
 }
 
@@ -27,11 +27,23 @@ page {
   display: flex;
 }
 
-.img{
+.img {
   width: 250px;
   height: 180px;
 }
 
 .title {
   background-color: #fff0f6;
+}
+
+.count {
+  color: $color-danger;
+  margin: 12px 12px 0;
+}
+
+.sticky {
+  position: sticky;
+  z-index: 9;
+  left: 0;
+  top: 0;
 }
