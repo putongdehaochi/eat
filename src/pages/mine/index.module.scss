@@ -1,8 +1,7 @@
-.index {
-  @include ellipsis(2);
-  color: $color-primary;
+.container {
+  padding: 0 12px;
 }
 
 .btn {
-  padding: 12px;
+  // padding: 12px;
 }

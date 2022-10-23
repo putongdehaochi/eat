@@ -5,6 +5,8 @@ export default defineAppConfig({
     'pages/work/index',
     'pages/love/index',
     'pages/mine/index',
+    'pages/index/detail/detail',
+    'pages/index/setting/setting',
   ],
   subPackages: [
     {
@@ -43,7 +45,7 @@ export default defineAppConfig({
     navigationBarTextStyle: 'black'
   },
   tabBar: {
-    color: "#121212",
+    color: "#939293",
     selectedColor: "#ff6188",
     backgroundColor: "#ffe9ee",
     list: [
