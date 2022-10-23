@@ -36,7 +36,8 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  data: Object
+  data: Object,
+  refresh: Function
 });
 const active = ref(_.get(props.data, "LOVER", false));
 const emit = defineEmits(["onClick", "onCancel"]);
@@ -44,19 +45,26 @@ const { userId } = Taro.getStorageSync("user");
 
 const favor = async () => {
   if (!active.value) {
+    Taro.showLoading({
+      title: "添加中"
+    });
     const [err] = await promiseCatcher(
       api.addFavorMovie({ ...props.data, userId })
     );
     if (err) return handleError(err);
+    Taro.hideLoading();
     active.value = true;
   } else {
+    Taro.showLoading({
+      title: "移除中"
+    });
     const [err] = await promiseCatcher(
       api.removeFavorMovie({ userId, movieId: _.get(props.data, "MOVIE_ID") })
     );
     if (err) return handleError(err);
+    Taro.hideLoading();
+    props.refresh()
     active.value = false;
   }
 };
 </script>
-
-<style></style>

@@ -1,6 +1,7 @@
 <template>
   <view :class="styles.container">
     <nut-searchbar
+      :class="`{${styles.sticky}: ${showSearch}}`"
       @focus="showSearch = true"
       input-background="#ffeef1"
       v-model="searchValue"
@@ -12,16 +13,24 @@
       </template>
       <template v-slot:rightout>
         <view @tap="cancel">取消</view>
-      </template></nut-searchbar
-    >
+      </template>
+    </nut-searchbar>
     <template v-if="showSearch">
-      <view :class="styles.list" v-for="(item, index) in dbResult" :key="index">
+      <view :class="styles.count" v-if="dbResultSum !== 0">
+        <text>{{ "电影总数 " }}</text>
+        <text>({{ dbResultSum }})</text>
+      </view>
+      <view
+        v-for="(item, index) in dbResult"
+        :class="styles.list"
+        :key="item.MOVIE_ID"
+      >
         <MovieBlock :data="item" :showHeart="true" />
       </view>
     </template>
     <template v-else>
-      <nut-menu scroll-fixed :title-class="styles.title">
-        <nut-menu-item title="类型" ref="select">
+      <nut-menu :title-class="styles.title" :class="styles.sticky">
+        <nut-menu-item :title="active" ref="select">
           <view :class="styles.select">
             <view v-for="item in state.types" :key="item">
               <span
@@ -34,8 +43,16 @@
           >
         </nut-menu-item>
       </nut-menu>
-      <view :class="styles.list" v-for="(item, index) in result" :key="index">
-        <MovieBlock :data="item" :showHeart="true" />
+      <view :class="styles.count" v-if="resultSum !== 0">
+        <text>{{ "电影总数 " }}</text>
+        <text>({{ resultSum }})</text>
+      </view>
+      <view
+        v-for="(item, index) in result"
+        :class="styles.list"
+        :key="item.MOVIE_ID"
+      >
+        <MovieBlock :data="item" :showHeart="true" :refresh="init" />
       </view>
     </template>
   </view>
@@ -55,7 +72,9 @@ const state = reactive({
   types: TYPES
 });
 const result = ref([]);
+const resultSum = ref(0);
 const dbResult = ref([]);
+const dbResultSum = ref(0);
 const select = ref("");
 const searchValue = ref("");
 const showSearch = ref(false);
@@ -63,7 +82,12 @@ const active = ref("全部类型");
 let page = 1;
 let dbPage = 1;
 
-const cancel = () => {
+const cancel = async () => {
+  const { result: list } = await getData({
+    keyword: active.value === "全部类型" ? "" : active.value,
+    page: 1
+  });
+  result.value = list;
   showSearch.value = false;
 };
 
@@ -77,6 +101,7 @@ const getDbData = async val => {
     handleError(err);
   }
   Taro.hideLoading();
+  dbResultSum.value = _.get(res, "total", 0);
   return { result: _.get(res, "results", []) };
 };
 
@@ -90,7 +115,13 @@ const getData = async val => {
     handleError(err);
   }
   Taro.hideLoading();
+  resultSum.value = _.get(res, "total", 0);
   return { result: _.get(res, "results", []) };
+};
+
+const init = async () => {
+  const { result: list } = await getData({ page });
+  result.value = list;
 };
 
 const search = async () => {
@@ -109,8 +140,7 @@ const setActive = async val => {
 };
 
 onMounted(async () => {
-  const { result: list } = await getData({ page });
-  result.value = list;
+  init();
 });
 
 useReachBottom(async () => {
@@ -122,7 +152,10 @@ useReachBottom(async () => {
     if (!_.isEmpty(result)) dbPage += 1;
     dbResult.value = _.concat(dbResult.value, result);
   } else {
-    const { result: list } = await getData({ page: page + 1 });
+    const { result: list } = await getData({
+      keyword: active.value,
+      page: page + 1
+    });
     if (!_.isEmpty(list)) page += 1;
     result.value = _.concat(result.value, list, []);
   }
