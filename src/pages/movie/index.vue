@@ -120,7 +120,10 @@ const getData = async val => {
 };
 
 const init = async () => {
-  const { result: list } = await getData({ page: 1 });
+  const { result: list } = await getData({
+    keyword: active.value === "全部类型" ? "" : active.value,
+    page: 1
+  });
   page = 1;
   result.value = list;
 };
@@ -131,9 +134,10 @@ const search = async () => {
 };
 
 const setActive = async val => {
+  let selected = val === "全部类型" ? "" : val;
   active.value = val;
   const { result: list } = await getData({
-    keyword: val === "全部类型" ? "" : val
+    keyword: selected
   });
   result.value = list;
   page = 1;
@@ -154,7 +158,7 @@ useReachBottom(async () => {
     dbResult.value = _.concat(dbResult.value, result);
   } else {
     const { result: list } = await getData({
-      keyword: active.value,
+      keyword: active.value === "全部类型" ? "" : active.value,
       page: page + 1
     });
     if (!_.isEmpty(list)) page += 1;
@@ -173,7 +177,10 @@ usePullDownRefresh(async () => {
     });
     dbResult.value = _.concat([], result);
   } else {
-    const { result: list } = await getData({ page: 1 });
+    const { result: list } = await getData({
+      keyword: active.value === "全部类型" ? "" : active.value,
+      page: 1
+    });
     result.value = _.concat([], list);
   }
 });
