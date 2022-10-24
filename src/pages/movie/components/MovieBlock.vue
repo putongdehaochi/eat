@@ -37,7 +37,12 @@ const props = defineProps({
     default: false
   },
   data: Object,
-  refresh: Function
+  refresh: {
+    type: Function,
+    default: () => {
+      return Function;
+    }
+  }
 });
 const active = ref(_.get(props.data, "LOVER", false));
 const emit = defineEmits(["onClick", "onCancel"]);
@@ -63,7 +68,7 @@ const favor = async () => {
     );
     if (err) return handleError(err);
     Taro.hideLoading();
-    props.refresh()
+    props.refresh();
     active.value = false;
   }
 };

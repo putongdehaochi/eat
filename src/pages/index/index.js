@@ -63,8 +63,6 @@ Page({
         that.setHomeData([cityCode], weatherData);
       });
     } else {
-      console.log("???", weatherData[defaultCityCode]);
-      console.log("!!!", citySelected);
       this.setHomeData(citySelected, weatherData);
     }
   },
