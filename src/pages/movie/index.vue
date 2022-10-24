@@ -120,7 +120,8 @@ const getData = async val => {
 };
 
 const init = async () => {
-  const { result: list } = await getData({ page });
+  const { result: list } = await getData({ page: 1 });
+  page = 1;
   result.value = list;
 };
 
