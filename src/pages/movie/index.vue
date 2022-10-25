@@ -1,61 +1,63 @@
 <template>
-  <view :class="styles.container">
-    <nut-searchbar
-      :class="`{${styles.sticky}: ${showSearch}}`"
-      @focus="showSearch = true"
-      input-background="#ffeef1"
-      v-model="searchValue"
-      background="#ffe9ee"
-      @search="search"
-    >
-      <template v-slot:leftin>
-        <nut-icon size="14" name="search2" />
-      </template>
-      <template v-slot:rightout>
-        <view @tap="cancel">取消</view>
-      </template>
-    </nut-searchbar>
-    <template v-if="showSearch">
-      <view :class="styles.count" v-if="dbResultSum !== 0">
-        <text>{{ "电影总数 " }}</text>
-        <text>({{ dbResultSum }})</text>
-      </view>
-      <view
-        v-for="(item, index) in dbResult"
-        :class="styles.list"
-        :key="item.MOVIE_ID"
+  <nut-backtop>
+    <view :class="styles.container">
+      <nut-searchbar
+        :class="`{${styles.sticky}: ${showSearch}}`"
+        @focus="showSearch = true"
+        input-background="#ffeef1"
+        v-model="searchValue"
+        background="#ffe9ee"
+        @search="search"
       >
-        <MovieBlock :data="item" :showHeart="true" />
-      </view>
-    </template>
-    <template v-else>
-      <nut-menu :title-class="styles.title" :class="styles.sticky">
-        <nut-menu-item :title="active" ref="select">
-          <view :class="styles.select">
-            <view v-for="item in state.types" :key="item">
-              <span
-                :class="{ mv_square: true, mv_highlight: active === item }"
-                @tap="setActive(item)"
-              >
-                {{ item }}
-              </span>
-            </view></view
-          >
-        </nut-menu-item>
-      </nut-menu>
-      <view :class="styles.count" v-if="resultSum !== 0">
-        <text>{{ "电影总数 " }}</text>
-        <text>({{ resultSum }})</text>
-      </view>
-      <view
-        v-for="(item, index) in result"
-        :class="styles.list"
-        :key="item.MOVIE_ID"
-      >
-        <MovieBlock :data="item" :showHeart="true" :refresh="init" />
-      </view>
-    </template>
-  </view>
+        <template v-slot:leftin>
+          <nut-icon size="14" name="search2" />
+        </template>
+        <template v-slot:rightout>
+          <view @tap="cancel">取消</view>
+        </template>
+      </nut-searchbar>
+      <template v-if="showSearch">
+        <view :class="styles.count" v-if="dbResultSum !== 0">
+          <text>{{ "电影总数 " }}</text>
+          <text>({{ dbResultSum }})</text>
+        </view>
+        <view
+          v-for="(item, index) in dbResult"
+          :class="styles.list"
+          :key="item.MOVIE_ID"
+        >
+          <MovieBlock :data="item" :showHeart="true" />
+        </view>
+      </template>
+      <template v-else>
+        <nut-menu :title-class="styles.title" :class="styles.sticky">
+          <nut-menu-item :title="active" ref="select">
+            <view :class="styles.select">
+              <view v-for="item in state.types" :key="item">
+                <span
+                  :class="{ mv_square: true, mv_highlight: active === item }"
+                  @tap="setActive(item)"
+                >
+                  {{ item }}
+                </span>
+              </view></view
+            >
+          </nut-menu-item>
+        </nut-menu>
+        <view :class="styles.count" v-if="resultSum !== 0">
+          <text>{{ "电影总数 " }}</text>
+          <text>({{ resultSum }})</text>
+        </view>
+        <view
+          v-for="(item, index) in result"
+          :class="styles.list"
+          :key="item.MOVIE_ID"
+        >
+          <MovieBlock :data="item" :showHeart="true" :refresh="init" />
+        </view>
+      </template>
+    </view>
+  </nut-backtop>
 </template>
 
 <script setup>

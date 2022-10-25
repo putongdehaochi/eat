@@ -1,4 +1,4 @@
-import { Button, Icon, Input, Form, FormItem, Checkbox, Cell, CellGroup, Grid, GridItem, Menu, MenuItem, OverLay, Popup, SearchBar, List, Barrage } from "@nutui/nutui-taro";
+import { Button, Icon, Input, Form, FormItem, Checkbox, Cell, CellGroup, Grid, GridItem, Menu, MenuItem, OverLay, Popup, SearchBar, List, Barrage, BackTop } from "@nutui/nutui-taro";
 import { createApp } from 'vue'
 // import Taro from "@tarojs/taro";
 import './assets/iconfont/iconfont.css';
@@ -37,6 +37,6 @@ const App = createApp({
 })
 App.use(Button).use(Cell).use(Icon).use(Input).use(Form)
   .use(FormItem).use(Checkbox).use(Cell).use(CellGroup).use(Grid).use(GridItem)
-  .use(Menu).use(MenuItem).use(OverLay).use(Popup).use(SearchBar).use(List).use(Barrage);
+  .use(Menu).use(MenuItem).use(OverLay).use(Popup).use(SearchBar).use(List).use(Barrage).use(BackTop);
 
 export default App
