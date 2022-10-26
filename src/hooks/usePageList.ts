@@ -1,6 +1,6 @@
 import Taro, { useReachBottom } from "@tarojs/taro";
 import _ from "lodash";
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { handleError } from "../utils";
 import { filterParams, promiseCatcher } from "../utils";
 
@@ -18,14 +18,14 @@ const defaultParams = {
 };
 
 export default function usePageList<T>(options: Options) {
-	const dataList = ref<Array<T>>([]);
+	const dataList = ref([]) as any;
 	const loading = ref(false);
 	const noMore = ref(false);
 	const pageSize = ref(10);
 	const total = ref(0);
 	const page = ref(1);
 	//分页查询操作
-	const getData = async (options) => {
+	const getData = async (addParams?) => {
 		Taro.showLoading({
 			title: "加载中",
 		});
@@ -34,13 +34,15 @@ export default function usePageList<T>(options: Options) {
 			options.request(
 				_.assign(
 					defaultParams,
-					filterParams({ ...options.params, ...options })
+					filterParams({ ...options.params, ...addParams })
 				)
 			)
 		);
 
-		if (err) handleError(err);
-		page.value += page.value;
+		if (err) return handleError(err);
+		Taro.hideLoading()
+
+		page.value = _.get(res, "page");
 		total.value = _.get(res, "total");
 		dataList.value = _.concat(dataList.value, _.get(res, "results", []));
 		noMore.value =
