@@ -1,28 +1,20 @@
 .container {
-  color: $color-danger;
   padding: 12px 16px;
-}
-
-.eyebrow {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-
-  &-eye {
-    width: 40%;
-    text-align: center;
-  }
-}
-
-.footer {
-  display: flex;
-}
-
-.nose {
-    text-align: center;
 }
 
 .block {
     background-color: #fff;
     margin-top: 12px;
+    padding: 12px;
+
+    &-title {
+      color: $color-danger;
+      font-size: 14px;
+    }
+
+    &-author {
+      color: $color-danger;
+      float: right;
+      font-size: 12px;
+    }
 }
