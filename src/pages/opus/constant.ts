@@ -6,7 +6,8 @@ export const opusList = [
     },
     {
         title: "霞",
-        author: "小冯"
+        author: "小冯",
+        url: "/pages/opus/xia/index"
     },
     {
         title: "100个好吃的",

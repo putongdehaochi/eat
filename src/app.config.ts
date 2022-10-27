@@ -20,8 +20,9 @@ export default defineAppConfig({
       "root": "pages/opus",
       "name": "opus",
       "pages": [
+        'food/index',
+        'xia/index',
         'index',
-        'food/index'
       ]
     },
     {

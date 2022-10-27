@@ -1,0 +1,19 @@
+.container {
+  background-image: url('../images/');
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title {
+  width: 100%;
+  line-height: 2;
+  font-size: 24px;
+  color: $color-danger;
+}
+
+.line {
+  font-size: 14px;
+  line-height: 1.5;
+  color: $color-danger;
+}
