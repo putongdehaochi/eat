@@ -10,4 +10,7 @@ export default {
     removeFood(data) {
         return http.post('/food/remove', data)
     },
+    editFood(data) {
+        return http.post('/food/edit', data)
+    },
 }
