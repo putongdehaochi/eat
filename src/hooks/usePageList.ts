@@ -17,7 +17,8 @@ const defaultParams = {
 	pageSize: 10,
 };
 
-export default function usePageList<T>(options: Options = { enableReachBottom = false, enablePullDownRefresh = false }) {
+export default function usePageList<T>(options: Options) {
+	const { enablePullDownRefresh = false, enableReachBottom = false } = options
 	const dataList = ref([]) as any;
 	const dataListCache = ref([]) as any;
 	const cacheParams = ref({});
@@ -46,7 +47,8 @@ export default function usePageList<T>(options: Options = { enableReachBottom = 
 		if (err) return handleError(err);
 		Taro.hideLoading()
 
-		const { resList } = _.get(res, "results", [])
+		const resList = _.get(res, "results", [])
+
 		const curList = page.value > 1 ? _.concat(dataListCache.value, resList) : resList;
 
 		page.value = _.get(assignParams, "page");
@@ -58,7 +60,7 @@ export default function usePageList<T>(options: Options = { enableReachBottom = 
 		cacheParams.value = assignParams;
 	};
 
-	const refresh = (options) => {
+	const refresh = (options?) => {
 		getData({ ...cacheParams.value, ...options });
 	};
 
@@ -69,11 +71,11 @@ export default function usePageList<T>(options: Options = { enableReachBottom = 
 	};
 
 	useReachBottom(() => {
-		if (options.enableReachBottom) loadMore();
+		if (enableReachBottom) loadMore();
 	});
 
 	usePullDownRefresh(async () => {
-		if (!options.enablePullDownRefresh) return
+		if (!enablePullDownRefresh) return
 		setTimeout(() => {
 			wx.stopPullDownRefresh(); //停止当前页面下拉刷新
 		}, 300);

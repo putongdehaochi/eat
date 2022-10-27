@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: '代表作',
+  navigationBarTitleText: '我不挑食呀',
 })

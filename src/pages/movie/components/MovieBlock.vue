@@ -27,9 +27,9 @@ import { promiseCatcher, handleError } from "@/utils";
 import Taro from "@tarojs/taro";
 import { ref } from "vue";
 import _ from "lodash";
+import noImg from "../../../assets/noImg.png";
 import styles from "./index.module.scss";
 import api from "../api";
-import noImg from "../../../assets/noImg.png";
 
 const props = defineProps({
   showHeart: {

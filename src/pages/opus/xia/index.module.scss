@@ -1,8 +1,9 @@
 .container {
-  background-image: url('../images/');
+  // background-image: url("../images/");
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .title {
@@ -13,7 +14,8 @@
 }
 
 .line {
+  width: 100%;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 2;
   color: $color-danger;
 }
