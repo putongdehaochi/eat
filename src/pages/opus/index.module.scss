@@ -6,6 +6,7 @@
     background-color: #fff;
     margin-top: 12px;
     padding: 12px;
+    border-radius: 6px;
 
     &-title {
       color: $color-danger;
@@ -14,7 +15,8 @@
 
     &-author {
       color: $color-danger;
-      float: right;
       font-size: 12px;
+      text-align: right;
+      color: #a9dc76;
     }
 }

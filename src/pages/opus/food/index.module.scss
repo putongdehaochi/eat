@@ -6,32 +6,52 @@
 }
 
 .eyebrow {
+  margin-top: 16px;
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: #fff;
+  height: 36px;
 
   &-eye {
     width: 40%;
-    text-align: center;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:first-child {
+      border-right: solid 1px $color-danger;
+    }
   }
 }
 
 .footer {
   display: flex;
+  width: 100%;
+  &-btn {
+    &:first-child {
+      border-right: solid 1px $color-danger;
+    }
+    width: 49%;
+    color: $color-danger;
+    text-align: center;
+  }
 }
 
 .nose {
   background-color: #fff;
-  text-align: center;
   width: 120px;
-  height: 20px;
-  margin: 12px 0;
+  height: 32px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.block {
-  width: 100%;
-  background-color: #fff;
-  margin-top: 12px;
-  padding: 12px;
+.dialog {
+  background-color: $color-primary;
+}
+
+.input {
+  height: 44px;
+  overflow: hidden;
 }

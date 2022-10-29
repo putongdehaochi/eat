@@ -23,6 +23,7 @@ export default defineAppConfig({
         'index',
         'xia/index',
         'food/index',
+        'menu/index',
       ]
     },
     {

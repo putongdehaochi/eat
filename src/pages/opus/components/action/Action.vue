@@ -25,7 +25,6 @@ const props = defineProps({
   data: Object
 });
 
-console.log('???',props.data);
 const emit = defineEmits(["dispatch"]);
 const emitEvent = (action, name, id) => {
   emit("dispatch", action, name, id);

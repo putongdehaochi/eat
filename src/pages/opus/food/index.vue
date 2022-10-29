@@ -7,6 +7,7 @@
           class-prefix="icon"
           color="#ff6188"
           name="smile"
+          size="24"
         />
       </view>
       <view :class="styles['eyebrow-eye']" @tap="onDislike"
@@ -15,29 +16,33 @@
           class-prefix="icon"
           color="#ff6188"
           name="frown"
+          size="24"
       /></view>
     </view>
     <view :class="styles.nose" @tap="() => dispatch('add')"
       >添加<nut-icon
         font-class-name="iconfont"
         class-prefix="icon"
+        style="margin-left: 12px"
         color="#ff6188"
         name="tianjia"
+        size="20"
     /></view>
     <view v-if="status === 1" style="width: 100%">
       <view v-for="item in dataList" :key="item.id">
-        <Action :data="item" />
+        <Action @dispatch="dispatch" :data="item" />
       </view>
     </view>
     <view v-else style="width: 100%">
-      <view v-for="item in dataList" :key="item.id" :class="styles.block">
+      <view v-for="item in dataList" :key="item.id">
         <view>
-          <Action :data="item" />
+          <Action @dispatch="dispatch" :data="item" />
         </view>
       </view>
     </view>
   </view>
   <nut-dialog
+    :custom-class="styles.dialog"
     v-model:visible="visible"
     :title="curAction.title"
     @cancel="onCancel"
@@ -45,8 +50,9 @@
   >
     <template #default>
       <nut-input
-        :defaultValue="curAction.defaultValue"
         v-if="curAction.showInput"
+        :error-message="errorTip"
+        :class="styles.input"
         v-model="inputName"
         :border="false"
         label=""
@@ -55,8 +61,8 @@
     </template>
     <template #footer>
       <view :class="styles.footer">
-        <view :class="styles['footer-cancel']" @tap="onCancel">取消</view>
-        <view :class="styles['footer-ok']" @tap="onOk">确认</view>
+        <view :class="styles['footer-btn']" @tap="onCancel">取消</view>
+        <view :class="styles['footer-btn']" @tap="onOk">确认</view>
       </view>
     </template>
   </nut-dialog>
@@ -73,6 +79,7 @@ import api from "../api";
 import _ from "lodash";
 
 const inputName = ref("");
+const errorTip = ref("");
 const status = ref(1);
 const likeList = ref([]);
 const dislikeList = ref([]);
@@ -91,29 +98,42 @@ const onCancel = () => {
   visible.value = false;
 };
 const onOk = async () => {
-  switch (curAction.action) {
+  switch (curAction.value.action) {
     case "add":
-      api.addFood({
-        status: status.value,
-        name: inputName.value,
-        userId
-      });
+      if (!inputName.value) return (errorTip.value = "请输入添加项");
+      errorTip.value = "";
+      const [addErr] = await promiseCatcher(
+        api.addFood({
+          status: status.value,
+          name: inputName.value,
+          userId
+        })
+      );
+      if (addErr) return handleError(addErr);
+      inputName.value = "";
+      break;
 
     case "edit":
-      api.editFood({
-        name: inputName.value,
-        id: curAction.id,
-        userId
-      });
-
+      if (!inputName.value) return (errorTip.value = "请输入编辑项");
+      errorTip.value = "";
+      const [editErr] = await promiseCatcher(
+        api.editFood({
+          name: inputName.value,
+          id: curAction.value.id,
+          userId
+        })
+      );
+      if (editErr) return handleError(editErr);
       break;
 
     case "delete":
-      api.removeFood({
-        id: curAction.id,
-        userId
-      });
-
+      const [removeErr] = await promiseCatcher(
+        api.removeFood({
+          id: curAction.value.id,
+          userId
+        })
+      );
+      if (removeErr) return handleError(removeErr);
       break;
 
     default:
@@ -142,7 +162,7 @@ const onDislike = async () => {
 const dispatch = (action, name, id) => {
   const title =
     action === "add"
-      ? status.value
+      ? status.value === 1
         ? "添加至喜欢"
         : "添加至不喜欢"
       : action === "edit"
@@ -153,10 +173,10 @@ const dispatch = (action, name, id) => {
     action,
     title,
     showInput,
-    defaultValue: action === "edit" ? name : "",
     curValue: name || "",
     id
   };
+  if (action === "edit") inputName.value = name;
   visible.value = true;
 };
 </script>

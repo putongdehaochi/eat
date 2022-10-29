@@ -13,7 +13,13 @@ page {
   flex: 1;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+
+  &-span {
+    width: 81px;
+    text-align: center;
+    @include ellipsis();
+  }
 }
 
 .list {

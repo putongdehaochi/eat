@@ -32,7 +32,11 @@
       <nut-menu :title-class="styles.title" :class="styles.sticky">
         <nut-menu-item :title="active" ref="select">
           <view :class="styles.select">
-            <view v-for="item in state.types" :key="item">
+            <view
+              :class="styles['select-span']"
+              v-for="item in state.types"
+              :key="item"
+            >
               <span
                 :class="{ mv_square: true, mv_highlight: active === item }"
                 @tap="setActive(item)"
@@ -191,7 +195,7 @@ usePullDownRefresh(async () => {
   background-color: #ffdde9;
   border-radius: 3px;
   padding: 5px;
-  margin: 5px 10px 5px 0;
+  margin: 5px;
   font-size: 15px;
   color: rgba(0, 0, 0, 0.3);
 }

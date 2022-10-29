@@ -11,6 +11,7 @@ export const opusList = [
     },
     {
         title: "100个好吃的",
-        author: "小冯，小王"
+        author: "小冯，小王",
+        url: "/pages/opus/menu/index"
     },
 ]

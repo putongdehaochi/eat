@@ -1,0 +1,21 @@
+.container {
+  // background-image: url("../images/");
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.title {
+  width: 100%;
+  line-height: 2;
+  font-size: 24px;
+  color: $color-danger;
+}
+
+.line {
+  width: 100%;
+  font-size: 14px;
+  line-height: 2;
+  color: $color-danger;
+}
