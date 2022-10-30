@@ -30,7 +30,6 @@ export default function usePageList<T>(options: Options) {
 	const page = ref(1);
 	//分页查询操作
 	const getData = async (addParams?) => {
-
 		const assignParams = _.assign(
 			defaultParams,
 			filterParams({ ...options.params, ...addParams })
@@ -51,13 +50,12 @@ export default function usePageList<T>(options: Options) {
 
 		page.value = _.get(assignParams, "page");
 		const curList = page.value > 1 ? _.concat(dataListCache.value, resList) : resList;
-		console.log(page.value);
-		console.log(curList);
+		pageSize.value = _.get(assignParams, "pageSize")
 		dataListCache.value = curList
 		total.value = _.get(res, "total");
 		dataList.value = curList;
 		noMore.value =
-			page.value === _.ceil(_.get(res, "total") / pageSize.value);
+			page.value === _.ceil(_.get(res, "total") / _.get(assignParams, "pageSize"));
 		noData.value = _.size(curList) === 0;
 		cacheParams.value = assignParams;
 	};
