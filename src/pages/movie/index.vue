@@ -30,22 +30,22 @@
     </template>
     <template v-else>
       <nut-menu :title-class="styles.title" :class="styles.sticky">
-        <nut-menu-item :title="active" ref="select">
-          <view :class="styles.select">
-            <view
-              :class="styles['select-span']"
-              v-for="item in state.types"
-              :key="item"
-            >
-              <span
-                :class="{ mv_square: true, mv_highlight: active === item }"
-                @tap="setActive(item)"
+          <nut-menu-item :title="active" ref="select">
+            <view :class="styles.select">
+              <view
+                :class="styles['select-span']"
+                v-for="item in state.types"
+                :key="item"
               >
-                {{ item }}
-              </span>
-            </view></view
-          >
-        </nut-menu-item>
+                <span
+                  :class="{ mv_square: true, mv_highlight: active === item }"
+                  @tap="setActive(item)"
+                >
+                  {{ item }}
+                </span>
+              </view></view
+            >
+          </nut-menu-item>
       </nut-menu>
       <view :class="styles.count" v-if="resultSum !== 0">
         <text>{{ "电影总数 " }}</text>
@@ -63,9 +63,9 @@
 </template>
 
 <script setup>
+import Taro, { useReachBottom, usePullDownRefresh } from "@tarojs/taro";
 import { ref, onMounted, reactive, watchEffect } from "vue";
 import { promiseCatcher, handleError } from "@/utils";
-import Taro, { useReachBottom, usePullDownRefresh } from "@tarojs/taro";
 import _ from "lodash";
 import MovieBlock from "./components/MovieBlock";
 import styles from "./index.module.scss";
@@ -205,5 +205,6 @@ usePullDownRefresh(async () => {
 .nut-menu-item__content {
   padding-top: 0;
   background-color: #fff0f6;
+  max-height: 300px
 }
 </style>

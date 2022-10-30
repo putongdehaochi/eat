@@ -1,4 +1,6 @@
 .container {
+  width: 100%;
+  overflow: hidden;
   color: $color-danger;
   display: flex;
   justify-content: center;

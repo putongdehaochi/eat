@@ -3,18 +3,18 @@
     <view :class="styles.eyebrow">
       <view :class="styles['eyebrow-eye']" @tap="onLike"
         ><nut-icon
+          :color="status === 1 ? '#ff6188': '#121212'"
           font-class-name="iconfont"
           class-prefix="icon"
-          color="#ff6188"
           name="smile"
           size="24"
         />
       </view>
       <view :class="styles['eyebrow-eye']" @tap="onDislike"
         ><nut-icon
+          :color="status === 2 ? '#ff6188': '#121212'"
           font-class-name="iconfont"
           class-prefix="icon"
-          color="#ff6188"
           name="frown"
           size="24"
       /></view>
@@ -89,7 +89,7 @@ const { userId } = Taro.getStorageSync("user");
 
 const { dataList, getData, noData, noMore } = usePageList({
   request: api.getFoodList,
-  params: { userId, status: status.value },
+  params: { userId, status: status.value, pageSize: 15 },
   enableReachBottom: true,
   enablePullDownRefresh: true
 });
@@ -139,24 +139,24 @@ const onOk = async () => {
     default:
       break;
   }
-  getData({ status: status.value });
+  getData({ status: status.value, page: 1 });
   visible.value = false;
 };
 
 onMounted(async () => {
-  getData();
+  getData({ page: 1 });
 });
 
 const onLike = async () => {
   if (status.value === 1) return;
   status.value = 1;
-  getData({ status: status.value });
+  getData({ status: status.value, page: 1 });
 };
 
 const onDislike = async () => {
   if (status.value === 2) return;
   status.value = 2;
-  getData({ status: status.value });
+  getData({ status: status.value, page: 1 });
 };
 
 const dispatch = (action, name, id) => {

@@ -49,9 +49,11 @@ export default function usePageList<T>(options: Options) {
 
 		const resList = _.get(res, "results", [])
 
-		const curList = page.value > 1 ? _.concat(dataListCache.value, resList) : resList;
-
 		page.value = _.get(assignParams, "page");
+		const curList = page.value > 1 ? _.concat(dataListCache.value, resList) : resList;
+		console.log(page.value);
+		console.log(curList);
+		dataListCache.value = curList
 		total.value = _.get(res, "total");
 		dataList.value = curList;
 		noMore.value =
@@ -77,7 +79,7 @@ export default function usePageList<T>(options: Options) {
 	usePullDownRefresh(async () => {
 		if (!enablePullDownRefresh) return
 		setTimeout(() => {
-			wx.stopPullDownRefresh(); //停止当前页面下拉刷新
+			Taro.stopPullDownRefresh(); //停止当前页面下拉刷新
 		}, 300);
 		refresh()
 	});
