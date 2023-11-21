@@ -12,7 +12,7 @@ fly.interceptors.request.use(config => {
     const { baseURL, url, method, body } = config
     const token_type = "Bearer"
     const { token } = Taro.getStorageSync('user')
-    if (!token) Taro.redirectTo({ url: '/pages/login/index' })
+    // if (!token) Taro.redirectTo({ url: '/pages/login/index' })
     config.headers.Authorization = token_type + ' ' + token
     console.group(`---------- 请求 [${baseURL}${url} ${method}]`);
     console.log('参数: ', filterParams(body));

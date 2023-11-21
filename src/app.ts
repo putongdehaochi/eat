@@ -1,6 +1,6 @@
 import {
   Button, Icon, Input, Form, FormItem, Checkbox, Cell, CellGroup, Grid, GridItem,
-  Menu, MenuItem, OverLay, Popup, SearchBar, List, Barrage, BackTop, Dialog, Swipe
+  Menu, MenuItem, OverLay, Popup, SearchBar, List, Barrage, BackTop, Dialog, Swipe, Empty
 } from "@nutui/nutui-taro";
 import { createApp } from 'vue'
 // import Taro from "@tarojs/taro";
@@ -40,6 +40,6 @@ const App = createApp({
 })
 App.use(Button).use(Cell).use(Icon).use(Input).use(Form)
   .use(FormItem).use(Checkbox).use(Cell).use(CellGroup).use(Grid).use(GridItem)
-  .use(Menu).use(MenuItem).use(OverLay).use(Popup).use(SearchBar).use(List).use(Barrage).use(BackTop).use(Dialog).use(Swipe);
+  .use(Menu).use(MenuItem).use(OverLay).use(Popup).use(SearchBar).use(List).use(Barrage).use(BackTop).use(Dialog).use(Swipe).use(Empty);
 
 export default App

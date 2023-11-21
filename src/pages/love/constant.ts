@@ -11,12 +11,12 @@ export default [
         "icon": "huoguo",
         "url": "/pages/food/index"
     },
-    {
-        "key": "opus",
-        "title": "代表作",
-        "icon": "hebaodan",
-        "url": "/pages/opus/index"
-    },
+    // {
+    //     "key": "opus",
+    //     "title": "代表作",
+    //     "icon": "hebaodan",
+    //     "url": "/pages/opus/index"
+    // },
     {
         "key": "music",
         "title": "音乐",

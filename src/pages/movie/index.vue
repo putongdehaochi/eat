@@ -3,9 +3,9 @@
     <nut-searchbar
       :class="`{${styles.sticky}: ${showSearch}}`"
       @focus="showSearch = true"
-      input-background="#ffeef1"
+      input-background="#99CCFF"
       v-model="searchValue"
-      background="#ffe9ee"
+      background="#CCFFCC"
       @search="search"
     >
       <template v-slot:leftin>

@@ -43,14 +43,14 @@ export default defineAppConfig({
   ],
   window: {
     backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#ffe9ee',
+    navigationBarBackgroundColor: '#CCFFCC',
     navigationBarTitleText: '火锅乌龙茶',
     navigationBarTextStyle: 'black'
   },
   tabBar: {
     color: "#939293",
     selectedColor: "#ff6188",
-    backgroundColor: "#ffe9ee",
+    backgroundColor: "#CCFFCC",
     list: [
       {
         pagePath: 'pages/index/index',

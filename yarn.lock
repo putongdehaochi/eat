@@ -2021,6 +2021,13 @@
   resolved "https://registry.npmmirror.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
   integrity sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==
 
+"@types/acorn@^4.0.5":
+  version "4.0.6"
+  resolved "https://registry.npmmirror.com/@types/acorn/-/acorn-4.0.6.tgz#d61ca5480300ac41a7d973dd5b84d0a591154a22"
+  integrity sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==
+  dependencies:
+    "@types/estree" "*"
+
 "@types/archy@^0.0.31":
   version "0.0.31"
   resolved "https://registry.npmmirror.com/@types/archy/-/archy-0.0.31.tgz#01650a4641e7e1d11dbd64eda42eec9a2f829c7f"
@@ -2083,6 +2090,11 @@
   version "1.0.0"
   resolved "https://registry.npmmirror.com/@types/estree/-/estree-1.0.0.tgz#5fb2e536c1ae9bf35366eed879e827fa59ca41c2"
   integrity sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==
+
+"@types/estree@0.0.41":
+  version "0.0.41"
+  resolved "https://registry.npmmirror.com/@types/estree/-/estree-0.0.41.tgz#fd90754150b57432b72bf560530500597ff04421"
+  integrity sha512-rIAmXyJlqw4KEBO7+u9gxZZSQHaCNnIzYrnNmYVpgfJhxTqO0brCX0SYpqUTkVI5mwwUwzmtspLBGBKroMeynA==
 
 "@types/estree@^0.0.51":
   version "0.0.51"
@@ -5691,6 +5703,16 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.npmmirror.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
+
+eval5@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.npmmirror.com/eval5/-/eval5-1.4.7.tgz#cccc486d5e97dd68078663238fce4fe086c550c6"
+  integrity sha512-GtNl5TyxeIE1VkZ8p4vgzeLkdh7UEn9qzLnSIh/aXKYiJc31i1tNGB0CZhPaXReIZIE59xTV39IsAdWY7P93UA==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@types/acorn" "^4.0.5"
+    "@types/estree" "0.0.41"
+    acorn "^7.1.0"
 
 eventemitter3@^4.0.0:
   version "4.0.7"
